@@ -25,7 +25,7 @@ const Login = () => {
     getLogin().then((user) => setUsers(user));
   }, []);
 
-  const validateUsers = () => {};
+  // const validateUsers = () => {};
 
   const handleSubmit = (e) => {
     e.preventDefault();

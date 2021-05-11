@@ -38,23 +38,21 @@ Open [https://lok-app-d005b.web.app/](https://lok-app-d005b.web.app/).
 
 ###### Login
 
-[Imgur](https://i.imgur.com/A8W7QLv.png)
+![Imgur](https://i.imgur.com/A8W7QLv.png)
 
 ###### Listado Personal
 
-[Imgur](https://i.imgur.com/4GJg8qu.png)
+![Imgur](https://i.imgur.com/4GJg8qu.png)
 
 ###### Selección de Usuario(Sidebar)
 
-[Imgur](https://i.imgur.com/IQ3q3QT.png)
+![Imgur](https://i.imgur.com/IQ3q3QT.png)
 
 ###### Álbum
 
-[Imgur](https://i.imgur.com/XPE7Dfm.png)
+![Imgur](https://i.imgur.com/XPE7Dfm.png)
 
 # Replicated design
-
-Open [https://lok-app-d005b.web.app/](https://lok-app-d005b.web.app/).
 
 ##### Login
 

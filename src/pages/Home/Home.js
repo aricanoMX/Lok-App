@@ -5,18 +5,19 @@ import getUsers from 'helpers/getUsers';
 import SEOHeader from 'components/SEOHeader';
 
 const Home = () => {
+  const [users, setUsers] = useState([]);
+  console.log(users);
+
   useEffect(() => {
-    validateUsers();
-    console.log;
+    // validateUsers();
+    getUsers().then((user) => setUsers(user));
   }, []);
 
-  const validateUsers = () => {
-    getUsers().then((user) => setUsers(user));
-  };
+  // const validateUsers = () => {};
 
   return (
     <div>
-      <SEOHeader title={`Home ${user}`} />
+      <SEOHeader title={`Home ${users.first_name}`} />
       <h1>Hola home</h1>
     </div>
   );
