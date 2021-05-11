@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { palette, devices, sizes } from 'styles/GlobalStyles';
 
-export const LoginStyles = styled.div`
+export const LoginStyles = styled.main`
   display: grid;
   justify-content: center;
   align-items: center;
