@@ -32,7 +32,7 @@ This project is under the MIT license
 ### Demo 💻
 
 You can see the demo of the project below:
-Open [https://lok-app-d005b.web.app/](https://lok-app-d005b.web.app/).
+Open [Firebase Hosting](https://lok-app-d005b.web.app/).
 
 # Original design
 
@@ -54,7 +54,7 @@ Open [https://lok-app-d005b.web.app/](https://lok-app-d005b.web.app/).
 
 # Replicated design
 
-##### Login
+Open [Firebase Hosting](https://lok-app-d005b.web.app/).
 
 ### Notes 🎉
 
