@@ -4,18 +4,14 @@ import getUsers from 'helpers/getUsers';
 import SEOHeader from 'components/SEOHeader';
 import ListOfUsers from 'components/ListOfUsers/ListOfUsers';
 
-import { HomeStyles } from './HomeStyles';
+import { HomeStyles, UserContainer, MoreUsers } from './HomeStyles';
 
 const Home = () => {
   const [users, setUsers] = useState([]);
-  console.log(users);
 
   useEffect(() => {
-    // validateUsers();
     getUsers().then((user) => setUsers(user));
   }, []);
-
-  // const validateUsers = () => {};
 
   return (
     <HomeStyles>
@@ -36,8 +32,12 @@ const Home = () => {
           </ul>
         </div>
       </header>
-
-      <ListOfUsers users={users} />
+      <UserContainer>
+        <ListOfUsers users={users} />
+        <MoreUsers>
+          <button onClick={() => alert('peticion para más usuarios')}>More Users</button>
+        </MoreUsers>
+      </UserContainer>
     </HomeStyles>
   );
 };

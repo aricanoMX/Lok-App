@@ -1,20 +1,21 @@
 import React from 'react';
 
-import { ListOfUsersStyles } from 'components/ListOfUsers/ListoOfUsersStyles';
+import { ListOfUsersStyles, CardOfUser } from 'components/ListOfUsers/ListoOfUsersStyles';
 
 const ListOfUsers = ({ users }) => {
   return (
     <ListOfUsersStyles>
-      {users.map((user) => (
-        <div>
-          <p key={user.id}>{user.name}</p>
-          <picture>
-            <img src="" alt="" />
-          </picture>
-          <h1>hola mundo</h1>
-          <p>fad;lkjfa;kfjl</p>)
-        </div>
-      ))}
+      <CardOfUser>
+        {users.map((user) => (
+          <div key={user.id} onClick={() => alert(`Hola ${user.first_name} ${user.last_name}`)}>
+            <picture>
+              <img src={user.avatar} alt="User Image" />
+            </picture>
+            <h3>{`${user.first_name} ${user.last_name}`}</h3>
+            <p>{user.email}</p>
+          </div>
+        ))}
+      </CardOfUser>
     </ListOfUsersStyles>
   );
 };

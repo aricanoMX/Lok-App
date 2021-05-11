@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
-import useModal from 'hooks/useModal';
+// import useModal from 'hooks/useModal';
 
 import getLogin from 'helpers/getLogin';
 import SEOHeader from 'components/SEOHeader';
@@ -16,27 +16,43 @@ const initialUsers = {
 
 const Login = () => {
   // const { isOpenModal, openModal, closeModal } = useModal(true);
-  const [users, setUsers] = useState(initialUsers);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [initialUser, setInitialUser] = useState(initialUsers);
+  const { email, password } = initialUser;
+  const [usersLogin, setUsersLogin] = useState([]);
+  const [loadingUsers, setLoadingUsers] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(false);
+
+  const history = useHistory();
+  console.log(history);
+
+  console.log(initialUser);
+  console.log(usersLogin);
 
   useEffect(() => {
-    // validateUsers();
-    getLogin().then((user) => setUsers(user));
+    getLogin().then((user) => setUsersLogin(user));
   }, []);
 
-  // const validateUsers = () => {};
+  const handleInputChange = (e) => {
+    const changedFormValues = {
+      ...usersLogin,
+      [e.target.name]: e.target.value,
+    };
+    setUsersLogin(changedFormValues);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email.target.value);
+    if (email === initialUsers.email && password === initialUsers.password) {
+      console.log('hola');
+      history.push('/');
+    }
+    // console.log(email.target.value);
   };
 
   return (
     <LoginStyles>
       <SEOHeader title={'Login App Lok'} />
       <Modal
-        // img=""
         img="https://banner2.cleanpng.com/20180412/kaq/kisspng-computer-icons-lock-multi-factor-authentication-fo-key-5acee064e6fdc4.3148491015235073009462.jpg"
         title="Sign In"
       >
@@ -45,14 +61,28 @@ const Login = () => {
           corporis quibusdam asperiores?
         </p>
         <form onSubmit={handleSubmit}>
-          <input type="email" placeholder="Email" />
+          <input
+            type="email"
+            placeholder="Email"
+            autoComplete="off"
+            name="email"
+            value={email}
+            onChange={handleInputChange}
+          />
           {/* <h4>Error Message</h4> */}
-          <input type="password" placeholder="Password" />
+          <input
+            type="password"
+            placeholder="Password"
+            autoComplete="off"
+            name="password"
+            password={password}
+            onChange={handleInputChange}
+          />
           {/* <h4>Error Message</h4> */}
           <button>Sign In</button>
         </form>
-        <Link to="">
-          <small>Forgot Your Password?</small>
+        <Link to="/register">
+          <small>Register Email</small>
         </Link>
       </Modal>
     </LoginStyles>
