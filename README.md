@@ -11,8 +11,8 @@ Test project to apply for the position of frontend developer within the smart lo
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-or
-Open [https://lok-app-d005b.web.app/](https://lok-app-d005b.web.app/) to view it in Firebise server.
+<br />or<br />
+Open [Firebase Hosting](https://lok-app-d005b.web.app/) to view it in Firebise server.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
@@ -32,7 +32,8 @@ This project is under the MIT license
 ### Demo 💻
 
 You can see the demo of the project below:
-Open [Firebase Hosting](https://lok-app-d005b.web.app/).
+
+- Open [Firebase Hosting](https://lok-app-d005b.web.app/).
 
 # Original design
 
@@ -54,7 +55,7 @@ Open [Firebase Hosting](https://lok-app-d005b.web.app/).
 
 # Replicated design
 
-Open [Firebase Hosting](https://lok-app-d005b.web.app/).
+- Open [Firebase Hosting](https://lok-app-d005b.web.app/).
 
 ### Notes 🎉
 
