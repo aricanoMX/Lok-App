@@ -1,5 +1,6 @@
 const getUsers = async () => {
-  const response = await fetch('https://reqres.in/api/users');
+  const url = 'https://reqres.in/api/users';
+  const response = await fetch(url);
   const { data: users } = await response.json();
   return users;
 };

@@ -1,40 +1,41 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useCallback, useContext } from 'react';
 
-import { SidebarStyle, SidebarHeader, Navbar } from 'Styles/components/SidebarStyles';
+import getPosts from 'helpers/getPosts';
 
-import Logo from 'Assets/Logo.png';
-import PinDrop from 'Assets/pin_drop.svg';
-import Restaurant from 'Assets/restaurant.svg';
+import { SidebarStyle, SidebarHeader, Navbar } from './SidebarStyles';
 
-const Sidebar = ({ openState, setState }) => {
-  const handleState = () => {
-    setState('false');
+import UserContext from 'context/userContext';
+import PostsContext from 'context/postsContext';
+
+const Sidebar = ({ showSideBar, setShowSideBar }) => {
+  const { users } = useContext(UserContext);
+  const { posts, setPosts } = useContext(PostsContext);
+  // console.log(users);
+  console.log(posts);
+
+  // const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    if (users?.id) {
+      updatePosts();
+    }
+  }, [users, updatePosts]);
+
+  const updatePosts = useCallback(() => {
+    getPosts(users.id).then((newPosts) => setPosts(newPosts));
+  }, [users.id]);
+
+  const handleCloseSidebar = () => {
+    setShowSideBar(!showSideBar);
+  };
+
+  const handleEditInformationSideBar = (e) => {
+    e.stopPropagation();
   };
 
   return (
-    <SidebarStyle state={openState} onClick={handleState}>
-      <SidebarHeader>
-        <Link to="/">
-          <img src={Logo} alt="Logo Melp" />
-        </Link>
-      </SidebarHeader>
-      {/* <hr /> */}
-      <Navbar>
-        <li>
-          <Link to="/References">
-            <img src={PinDrop} alt="burger-menu" />
-            <span>All Markers</span>
-          </Link>
-        </li>
-        <li>
-          <Link to="/Recomendations">
-            <img src={Restaurant} alt="burger-menu" />
-            <span>Recomendations</span>
-          </Link>
-        </li>
-      </Navbar>
-      {/* <hr /> */}
+    <SidebarStyle showSideBar={showSideBar} onClick={handleCloseSidebar}>
+      <div onClick={handleEditInformationSideBar}></div>
     </SidebarStyle>
   );
 };

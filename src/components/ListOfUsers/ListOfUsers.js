@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+
+import Sidebar from 'components/Sidebar/Sidebar';
+import UserContext from 'context/userContext';
 
 import { ListOfUsersStyles, CardOfUser } from 'components/ListOfUsers/ListoOfUsersStyles';
 
-const ListOfUsers = ({ users }) => {
+const ListOfUsers = () => {
+  const { users } = useContext(UserContext);
+
+  const [showSideBar, setShowSideBar] = useState(false);
+
   return (
     <ListOfUsersStyles>
-      <CardOfUser>
+      <CardOfUser onClick={() => setShowSideBar(!showSideBar)}>
         {users.map((user) => (
-          <div key={user.id} onClick={() => alert(`Hola ${user.first_name} ${user.last_name}`)}>
+          <div key={user.id} onClick={() => setShowSideBar(showSideBar)}>
             <picture>
               <img src={user.avatar} alt="User Image" />
             </picture>
@@ -15,6 +22,7 @@ const ListOfUsers = ({ users }) => {
             <p>{user.email}</p>
           </div>
         ))}
+        {showSideBar && <Sidebar showSideBar={showSideBar} setShowSideBar={setShowSideBar} />}
       </CardOfUser>
     </ListOfUsersStyles>
   );

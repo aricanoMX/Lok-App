@@ -8,32 +8,10 @@ export const HomeStyles = styled.div`
   background: right center
     url('https://png.pngtree.com/thumb_back/fw800/background/20191009/pngtree-graphics-asset-of-orange-smoke-image_318554.jpg');
   background-size: cover;
-  & header {
-    width: 100%;
-    display: inherit;
-    grid-template-columns: repeat(2, 1fr);
-    align-items: center;
-    & div {
-      display: flex;
-      justify-content: center;
-      & ul {
-        display: flex;
-        gap: 0 0.75rem;
-        & li {
-          font-weight: 600;
-          list-style: none;
-        }
-      }
-    }
-  }
   @media ${devices.breakpointsTablet} {
     grid-template-rows: 75px calc(100vh - 75px);
   }
   @media ${devices.breakpointsDesktop} {
-    & header {
-      margin: 0 auto;
-      max-width: ${sizes.desktop};
-    }
   }
 `;
 export const UserContainer = styled.main`

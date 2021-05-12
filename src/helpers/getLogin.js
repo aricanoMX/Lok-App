@@ -1,5 +1,6 @@
 const getLogin = async () => {
-  const response = await fetch('https://reqres.in/api/login');
+  const url = 'https://reqres.in/api/login';
+  const response = await fetch(url);
   const { data } = await response.json();
   return data;
 };

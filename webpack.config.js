@@ -72,6 +72,9 @@ module.exports = {
     new SourceMapDevToolPlugin({
       filename: '[file].map',
     }),
+    new webpack.ProvidePlugin({
+      React: 'react',
+    }),
   ],
   devServer: {
     contentBase: path.join(__dirname, './src'),

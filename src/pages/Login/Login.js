@@ -3,9 +3,10 @@ import { Link, useHistory } from 'react-router-dom';
 
 // import useModal from 'hooks/useModal';
 
+import Modal from 'components/Modal/Modal';
 import getLogin from 'helpers/getLogin';
 import SEOHeader from 'components/SEOHeader';
-import Modal from 'components/Modal/Modal';
+import useAuthContext from 'hooks/useAuthContext';
 
 import { LoginStyles } from './LoginStyles';
 
@@ -16,37 +17,32 @@ const initialUsers = {
 
 const Login = () => {
   // const { isOpenModal, openModal, closeModal } = useModal(true);
+  const { login } = useAuthContext();
   const [initialUser, setInitialUser] = useState(initialUsers);
   const { email, password } = initialUser;
-  const [usersLogin, setUsersLogin] = useState([]);
-  const [loadingUsers, setLoadingUsers] = useState(true);
-  const [errorMessage, setErrorMessage] = useState(false);
-
+  const [authUsers, setAuthUsers] = useState();
+  const [usersAPI, setUsersAPI] = useState();
   const history = useHistory();
-  console.log(history);
-
-  console.log(initialUser);
-  console.log(usersLogin);
 
   useEffect(() => {
-    getLogin().then((user) => setUsersLogin(user));
+    getLogin().then((user) => setUsersAPI(user));
   }, []);
 
   const handleInputChange = (e) => {
     const changedFormValues = {
-      ...usersLogin,
+      ...initialUser,
       [e.target.name]: e.target.value,
     };
-    setUsersLogin(changedFormValues);
+    setAuthUsers(changedFormValues);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (email === initialUsers.email && password === initialUsers.password) {
-      console.log('hola');
-      history.push('/');
+      login();
+      // history.push('/home');
     }
-    // console.log(email.target.value);
   };
 
   return (
@@ -69,17 +65,17 @@ const Login = () => {
             value={email}
             onChange={handleInputChange}
           />
-          {/* <h4>Error Message</h4> */}
+          {email !== 'eve.holt@reqres.in' && <small>Incorrect, Please tyr again </small>}
           <input
             type="password"
-            placeholder="Password"
+            placeholder="Password: cityslicka"
             autoComplete="off"
             name="password"
             password={password}
             onChange={handleInputChange}
           />
           {/* <h4>Error Message</h4> */}
-          <button>Sign In</button>
+          <button type="submit">Sign In</button>
         </form>
         <Link to="/register">
           <small>Register Email</small>

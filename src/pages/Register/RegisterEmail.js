@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
+
+import { LOGIN } from 'routes/paths';
 
 import Modal from 'components/Modal/Modal';
 
@@ -49,6 +51,9 @@ const RegisterEmail = () => {
             />
             <button>Register</button>
           </form>
+          <Link to={LOGIN}>
+            <small>{`Go Back ⬅`}</small>
+          </Link>
         </Modal>
       )}
     </RegisterEmailStyles>
