@@ -4,16 +4,12 @@ import getPosts from 'helpers/getPosts';
 
 import { SidebarStyle, SidebarHeader, Navbar } from './SidebarStyles';
 
-import UserContext from 'context/userContext';
-import PostsContext from 'context/postsContext';
+import UserContext from 'store/context/userContext';
+import PostsContext from 'store/context/postsContext';
 
 const Sidebar = ({ showSideBar, setShowSideBar }) => {
   const { users } = useContext(UserContext);
   const { posts, setPosts } = useContext(PostsContext);
-  // console.log(users);
-  console.log(posts);
-
-  // const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     if (users?.id) {
@@ -22,8 +18,8 @@ const Sidebar = ({ showSideBar, setShowSideBar }) => {
   }, [users, updatePosts]);
 
   const updatePosts = useCallback(() => {
-    getPosts(users.id).then((newPosts) => setPosts(newPosts));
-  }, [users.id]);
+    getPosts().then((newPosts) => setPosts(newPosts));
+  }, []);
 
   const handleCloseSidebar = () => {
     setShowSideBar(!showSideBar);
@@ -35,7 +31,7 @@ const Sidebar = ({ showSideBar, setShowSideBar }) => {
 
   return (
     <SidebarStyle showSideBar={showSideBar} onClick={handleCloseSidebar}>
-      <div onClick={handleEditInformationSideBar}></div>
+      <div onClick={handleEditInformationSideBar}>{}</div>
     </SidebarStyle>
   );
 };

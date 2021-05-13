@@ -1,20 +1,30 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useReducer } from 'react';
 
 import Sidebar from 'components/Sidebar/Sidebar';
-import UserContext from 'context/userContext';
+import UserContext from 'store/context/userContext';
 
-import { ListOfUsersStyles, CardOfUser } from 'components/ListOfUsers/ListoOfUsersStyles';
+import {
+  ListOfUsersStyles,
+  CardOfUser,
+  MoreUsers,
+} from 'components/ListOfUsers/ListoOfUsersStyles';
 
 const ListOfUsers = () => {
-  const { users } = useContext(UserContext);
-
+  const { users, setUsers } = useContext(UserContext);
   const [showSideBar, setShowSideBar] = useState(false);
+
+  // const handleNextPage = () => {
+  //   setLoading(true);
+
+  //   setLoading(false);
+  // };
 
   return (
     <ListOfUsersStyles>
       <CardOfUser onClick={() => setShowSideBar(!showSideBar)}>
         {users.map((user) => (
-          <div key={user.id} onClick={() => setShowSideBar(showSideBar)}>
+          <div key={user.id} onClick={() => ''}>
+            {/* <div key={user.id} onClick={() => setShowSideBar(showSideBar)}> */}
             <picture>
               <img src={user.avatar} alt="User Image" />
             </picture>
@@ -22,8 +32,15 @@ const ListOfUsers = () => {
             <p>{user.email}</p>
           </div>
         ))}
-        {showSideBar && <Sidebar showSideBar={showSideBar} setShowSideBar={setShowSideBar} />}
       </CardOfUser>
+      {showSideBar && <Sidebar showSideBar={showSideBar} setShowSideBar={setShowSideBar} />}
+      <MoreUsers>
+        {users.length >= 11 ? (
+          <button disable>More Users</button>
+        ) : (
+          <button onClick={() => handleNextPage}>More Users</button>
+        )}
+      </MoreUsers>
     </ListOfUsersStyles>
   );
 };

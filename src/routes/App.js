@@ -14,9 +14,9 @@ import NotFound from 'pages/NotFound';
 import PrivateRoutes from 'routes/PrivateRoutes/PrivateRoutes';
 import PublicRoutes from 'routes/PublicRoutes/PublicRoutes';
 
-import AuthProvider from 'context/authContext';
-import { UserProvider } from 'context/userContext';
-import { PostsProvider } from 'context/postsContext';
+import AuthProvider from 'store/context/authContext';
+import { UserProvider } from 'store/context/userContext';
+import { PostsProvider } from 'store/context/postsContext';
 
 const App = () => {
   return (

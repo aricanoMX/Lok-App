@@ -7,7 +7,11 @@ const UserContext = createContext();
 const UserProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
 
-  const data = { users };
+  const toggledSelectedUser = (movieId) => {
+    alert(movieId);
+  };
+
+  const data = { users, setUsers };
 
   useEffect(() => {
     updateUser();

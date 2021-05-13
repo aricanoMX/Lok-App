@@ -22,7 +22,7 @@ export const fonts = {
 export const sizes = {
   mobile: `375px`,
   tablet: `768px`,
-  desktop: `1024px`,
+  desktop: `1025px`,
 };
 export const devices = {
   breakpointsMobile: `(min-width: ${sizes.mobile})`,

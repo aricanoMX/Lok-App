@@ -22,7 +22,7 @@ const Login = () => {
   const { email, password } = initialUser;
   const [authUsers, setAuthUsers] = useState();
   const [usersAPI, setUsersAPI] = useState();
-  const history = useHistory();
+  // const history = useHistory();
 
   useEffect(() => {
     getLogin().then((user) => setUsersAPI(user));

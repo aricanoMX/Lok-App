@@ -16,29 +16,7 @@ export const HomeStyles = styled.div`
 `;
 export const UserContainer = styled.main`
   display: inherit;
-  grid-template-rows: 92.5% 7.5%;
-  @media ${devices.breakpointsTablet} {
-  }
-  @media ${devices.breakpointsDesktop} {
-  }
-`;
-
-export const MoreUsers = styled.div`
-  display: inherit;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
-  & button {
-    height: 1.5rem;
-    width: 6rem;
-    border-radius: 0.5rem;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0.125rem 0.25rem 1rem 1px ${palette.dividerColor};
-    & :hover {
-      background-color: #2323;
-    }
-  }
+  grid-template-rows: 1fr;
   @media ${devices.breakpointsTablet} {
   }
   @media ${devices.breakpointsDesktop} {

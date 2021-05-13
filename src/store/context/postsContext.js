@@ -1,6 +1,6 @@
 import React, { useState, useEffect, createContext } from 'react';
 
-import getPosts from 'helpers/getUsers';
+import getPosts from 'helpers/getPosts';
 
 const PostsContext = createContext();
 

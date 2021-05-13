@@ -6,6 +6,8 @@ export const HeaderStyles = styled.header`
   display: inherit;
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
+  overflow-y: hidden;
+
   & div {
     display: flex;
     justify-content: center;
