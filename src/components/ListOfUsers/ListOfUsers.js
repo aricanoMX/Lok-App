@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext, useReducer } from 'react';
 
-import Sidebar from 'components/Sidebar/Sidebar';
 import UserContext from 'store/context/userContext';
+import Sidebar from 'components/Sidebar/Sidebar';
 
 import {
   ListOfUsersStyles,
@@ -10,20 +10,15 @@ import {
 } from 'components/ListOfUsers/ListoOfUsersStyles';
 
 const ListOfUsers = () => {
-  const { users, setUsers } = useContext(UserContext);
+  const { users, toggledSelectedUser } = useContext(UserContext);
+
   const [showSideBar, setShowSideBar] = useState(false);
-
-  // const handleNextPage = () => {
-  //   setLoading(true);
-
-  //   setLoading(false);
-  // };
 
   return (
     <ListOfUsersStyles>
       <CardOfUser onClick={() => setShowSideBar(!showSideBar)}>
         {users.map((user) => (
-          <div key={user.id} onClick={() => ''}>
+          <div key={user.id} onClick={() => toggledSelectedUser(user.id)}>
             {/* <div key={user.id} onClick={() => setShowSideBar(showSideBar)}> */}
             <picture>
               <img src={user.avatar} alt="User Image" />
@@ -33,7 +28,13 @@ const ListOfUsers = () => {
           </div>
         ))}
       </CardOfUser>
-      {showSideBar && <Sidebar showSideBar={showSideBar} setShowSideBar={setShowSideBar} />}
+      {showSideBar && (
+        <Sidebar
+          showSideBar={showSideBar}
+          setShowSideBar={setShowSideBar}
+          toggledSelectedUser={toggledSelectedUser}
+        />
+      )}
       <MoreUsers>
         {users.length >= 11 ? (
           <button disable>More Users</button>

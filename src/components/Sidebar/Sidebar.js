@@ -1,25 +1,12 @@
 import React, { useState, useEffect, useCallback, useContext } from 'react';
 
-import getPosts from 'helpers/getPosts';
-
-import { SidebarStyle, SidebarHeader, Navbar } from './SidebarStyles';
+import { SidebarStyle, SidebarWrapper, UserWrapper, PostsWrapper } from './SidebarStyles';
 
 import UserContext from 'store/context/userContext';
-import PostsContext from 'store/context/postsContext';
 
 const Sidebar = ({ showSideBar, setShowSideBar }) => {
-  const { users } = useContext(UserContext);
-  const { posts, setPosts } = useContext(PostsContext);
-
-  useEffect(() => {
-    if (users?.id) {
-      updatePosts();
-    }
-  }, [users, updatePosts]);
-
-  const updatePosts = useCallback(() => {
-    getPosts().then((newPosts) => setPosts(newPosts));
-  }, []);
+  const { specificUser, posts } = useContext(UserContext);
+  console.log(posts);
 
   const handleCloseSidebar = () => {
     setShowSideBar(!showSideBar);
@@ -31,7 +18,39 @@ const Sidebar = ({ showSideBar, setShowSideBar }) => {
 
   return (
     <SidebarStyle showSideBar={showSideBar} onClick={handleCloseSidebar}>
-      <div onClick={handleEditInformationSideBar}>{}</div>
+      <SidebarWrapper onClick={handleEditInformationSideBar}>
+        <UserWrapper>
+          <div>
+            <picture>
+              <img src={specificUser.avatar} alt="User Image" />
+            </picture>
+          </div>
+          <figcaption>
+            <h3>{`${specificUser.first_name} ${specificUser.last_name}`}</h3>
+            <p>{specificUser.email}</p>
+          </figcaption>
+        </UserWrapper>
+        <hr />
+        <div className="title">
+          <h1>Posts</h1>
+          <h1>[{posts.length}post]</h1>
+        </div>
+        <PostsWrapper>
+          {posts.map((post) => (
+            <div>
+              <h3>
+                {post.id}.- &nbsp;
+                {post.title}
+              </h3>
+              <p>{post.body}</p>
+              <div>
+                <button>Editar</button>
+                <button>Eliminar</button>
+              </div>
+            </div>
+          ))}
+        </PostsWrapper>
+      </SidebarWrapper>
     </SidebarStyle>
   );
 };

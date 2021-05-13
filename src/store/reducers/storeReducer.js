@@ -1,12 +1,14 @@
 import { useContext } from 'react';
 
-const userReducer = (state, action) => {
+const initialStore
+
+const storeReducer = (state, action) => {
   const { users } = useContext(UserContext);
   const { posts, setPosts } = useContext(PostsContext);
 
   switch (action.type) {
-    case type.default:
+    default:
       return state;
   }
 };
-export default userReducer;
+export default storeReducer;

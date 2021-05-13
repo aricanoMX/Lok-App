@@ -16,7 +16,6 @@ import PublicRoutes from 'routes/PublicRoutes/PublicRoutes';
 
 import AuthProvider from 'store/context/authContext';
 import { UserProvider } from 'store/context/userContext';
-import { PostsProvider } from 'store/context/postsContext';
 
 const App = () => {
   return (
@@ -30,9 +29,7 @@ const App = () => {
           </PublicRoutes>
           <PublicRoutes exact path="/register" component={Register} />
           <UserProvider>
-            <PostsProvider>
-              <PrivateRoutes exact path={HOME} component={Home} />
-            </PostsProvider>
+            <PrivateRoutes exact path={HOME} component={Home} />
             <PrivateRoutes exact path={ALBUM} component={Album} />
             <PrivateRoutes path={LOGOUT} component={Logout} />
           </UserProvider>

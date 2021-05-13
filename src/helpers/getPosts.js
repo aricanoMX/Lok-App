@@ -1,5 +1,5 @@
-const getPosts = async () => {
-  const url = 'https://jsonplaceholder.typicode.com/posts?userId=1';
+const getPosts = async (userId) => {
+  const url = `https://jsonplaceholder.typicode.com/posts?userId=${userId}`;
   const response = await fetch(url);
   const posts = await response.json();
   return posts;
