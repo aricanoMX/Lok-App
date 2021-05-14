@@ -60,7 +60,7 @@ export const SidebarWrapper = styled.div`
   grid-template: 40% 2px 7.5% auto / 1fr;
   justify-items: center;
   align-items: center;
-  background: orange;
+  background: rgba(255, 145, 0, 0.95);
   height: 100%;
   padding: 2.5%;
   overflow: hidden;
@@ -144,27 +144,41 @@ export const PostsWrapper = styled.div`
       display: none;
     }
     & h3 {
-      height: 2rem;
+      height: 1.75rem;
       text-overflow: ellipsis;
       overflow: hidden;
-      white-space: nowrap;
+      white-space: wrap;
     }
     & p {
+      font-size: 14px;
+      height: 4.5rem;
+      margin-bottom: 0.5rem;
       text-align: justify;
       text-justify: inter-word;
-      margin-bottom: 0.5rem;
+      overflow: hidden;
+      white-space: wrap;
+      text-overflow: ellipsis;
+    }
+    & hr {
+      width: 100%;
+      /* margin: 0 auto; */
     }
     & div {
       display: grid;
+      justify-items: center;
       align-items: center;
-      gap: 0.125rem 0;
+      /* gap: 1.5rem 0; */
       & button {
-        width: 100%;
+        width: 90%;
         color: rgba(255, 255, 255, 0.75);
         background: beige;
         border: thin solid gray;
         border-radius: 0.5rem;
         height: 1.25rem;
+        cursor: pointer;
+        & :hover {
+          filter: hue-rotate(-72deg);
+        }
         &:nth-of-type(1) {
           background: #0076e0;
         }
@@ -176,7 +190,11 @@ export const PostsWrapper = styled.div`
   }
 
   @media ${devices.breakpointsTablet} {
+    gap: 1.5rem 0;
     div {
+      p {
+        height: 3.375rem;
+      }
       div {
         display: flex;
         justify-content: space-around;
@@ -188,5 +206,6 @@ export const PostsWrapper = styled.div`
     }
   }
   @media ${devices.breakpointsDesktop} {
+    gap: 2.5rem 0;
   }
 `;

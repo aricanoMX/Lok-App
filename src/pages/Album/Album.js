@@ -2,24 +2,30 @@ import React, { useState, useContext } from 'react';
 
 import Header from 'components/Header/Header';
 import SEOHeader from 'components/SEOHeader';
-import { UserContainer } from 'pages/Home/HomeStyles';
 
 import UserContext from 'store/context/userContext';
 
-import { AlbumStyles, ListOfUsersStyles, CardOfUser, MoreUsers } from './AlbumStyles';
+import {
+  AlbumStyles,
+  AlbumContainer,
+  ListOfUsersStyles,
+  CardOfUser,
+  MoreUsers,
+} from './AlbumStyles';
 
 const Album = () => {
-  const { users, setUsers } = useContext(UserContext);
+  const { users, toggleAlbums } = useContext(UserContext);
 
   return (
     <AlbumStyles>
       <SEOHeader title={`Album`} />
       <Header title="Album" />
-      <UserContainer>
+      <AlbumContainer>
         <ListOfUsersStyles>
+          <h1>Albums</h1>
           <CardOfUser>
             {users.map((user) => (
-              <div key={user.id}>
+              <div key={user.id} onClick={() => toggleAlbums(user.id)}>
                 <picture>
                   <img src={user.avatar} alt="User Image" />
                 </picture>
@@ -36,7 +42,7 @@ const Album = () => {
             )}
           </MoreUsers>
         </ListOfUsersStyles>
-      </UserContainer>
+      </AlbumContainer>
     </AlbumStyles>
   );
 };

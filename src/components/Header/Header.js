@@ -5,11 +5,16 @@ import { HOME, ALBUM, LOGOUT } from 'routes/paths';
 
 import { HeaderStyles } from './HeaderStyles';
 
-const Header = ({ title }) => {
+const Header = () => {
   return (
     <HeaderStyles>
       <Link to={HOME}>
-        <h3>{title}</h3>
+        <picture>
+          <img
+            src="https://logos.textgiraffe.com/logos/logo-name/Lok-designstyle-boots-m.png"
+            alt="Logo"
+          />
+        </picture>
       </Link>
       <div>
         <ul>

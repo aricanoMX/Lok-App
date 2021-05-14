@@ -6,11 +6,30 @@ export const ListOfUsersStyles = styled.div`
   height: 100%;
   align-items: center;
   padding: 2.5% 1%;
+  width: 100%;
+  max-width: ${sizes.desktop};
+  margin: 0 auto;
   overflow-y: scroll;
+  & ::-webkit-scrollbar {
+    display: none;
+  }
+  & h1 {
+    padding-left: 5%;
+  }
   @media ${devices.breakpointsTablet} {
     padding: 1.5%;
+    & h1 {
+      padding: 0;
+      margin: 0 auto;
+    }
   }
   @media ${devices.breakpointsDesktop} {
+    & h1 {
+      padding-left: 5%;
+      margin: 0;
+      max-width: ${devices.breakpointsDesktop};
+    }
+
     /* height: calc(100vh - 100px); */
   }
 `;
@@ -75,6 +94,7 @@ export const CardOfUser = styled.div`
   }
 `;
 export const MoreUsers = styled.div`
+  opacity: 0;
   display: flex;
   justify-content: center;
   align-items: center;

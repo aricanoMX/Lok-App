@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <HomeStyles>
       <SEOHeader title={`Home`} />
-      <Header title="Home" />
+      <Header />
       <UserContainer>
         <ListOfUsers />
       </UserContainer>

@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useCallback, useContext } from 'react';
+import UserContext from 'store/context/userContext';
 
 import { SidebarStyle, SidebarWrapper, UserWrapper, PostsWrapper } from './SidebarStyles';
 
-import UserContext from 'store/context/userContext';
-
 const Sidebar = ({ showSideBar, setShowSideBar }) => {
-  const { specificUser, posts } = useContext(UserContext);
-  console.log(posts);
+  const { specificUser: user, posts } = useContext(UserContext);
 
   const handleCloseSidebar = () => {
     setShowSideBar(!showSideBar);
@@ -22,12 +20,12 @@ const Sidebar = ({ showSideBar, setShowSideBar }) => {
         <UserWrapper>
           <div>
             <picture>
-              <img src={specificUser.avatar} alt="User Image" />
+              <img src={user.avatar} alt="User Image" />
             </picture>
           </div>
           <figcaption>
-            <h3>{`${specificUser.first_name} ${specificUser.last_name}`}</h3>
-            <p>{specificUser.email}</p>
+            <h3>{`${user.first_name} ${user.last_name}`}</h3>
+            <p>{user.email}</p>
           </figcaption>
         </UserWrapper>
         <hr />
@@ -37,14 +35,16 @@ const Sidebar = ({ showSideBar, setShowSideBar }) => {
         </div>
         <PostsWrapper>
           {posts.map((post) => (
-            <div>
+            <div key={post.id}>
               <h3>
                 {post.id}.- &nbsp;
                 {post.title}
               </h3>
+              <hr />
               <p>{post.body}</p>
+              <hr />
               <div>
-                <button>Editar</button>
+                <button onClick={() => alert('minombre es andres')}>Editar</button>
                 <button>Eliminar</button>
               </div>
             </div>

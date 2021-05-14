@@ -10,15 +10,16 @@ import {
 } from 'components/ListOfUsers/ListoOfUsersStyles';
 
 const ListOfUsers = () => {
-  const { users, toggledSelectedUser } = useContext(UserContext);
+  const { users, toggleSidebar } = useContext(UserContext);
 
   const [showSideBar, setShowSideBar] = useState(false);
 
   return (
     <ListOfUsersStyles>
+      <h1>Profiles</h1>
       <CardOfUser onClick={() => setShowSideBar(!showSideBar)}>
         {users.map((user) => (
-          <div key={user.id} onClick={() => toggledSelectedUser(user.id)}>
+          <div key={user.id} onClick={() => toggleSidebar(user.id)}>
             {/* <div key={user.id} onClick={() => setShowSideBar(showSideBar)}> */}
             <picture>
               <img src={user.avatar} alt="User Image" />
@@ -32,7 +33,7 @@ const ListOfUsers = () => {
         <Sidebar
           showSideBar={showSideBar}
           setShowSideBar={setShowSideBar}
-          toggledSelectedUser={toggledSelectedUser}
+          toggleSidebar={toggleSidebar}
         />
       )}
       <MoreUsers>
