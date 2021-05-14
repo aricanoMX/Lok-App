@@ -32,7 +32,16 @@ const UserProvider = ({ children }) => {
     history.push('/album/user#' + userId);
   }, []);
 
-  const data = { users, toggleSidebar, toggleAlbums, specificUser, posts, albums };
+  const data = {
+    users,
+    toggleSidebar,
+    toggleAlbums,
+    specificUser,
+    posts,
+    setPosts,
+    albums,
+    setAlbums,
+  };
 
   return <UserContext.Provider value={data}>{children}</UserContext.Provider>;
 };

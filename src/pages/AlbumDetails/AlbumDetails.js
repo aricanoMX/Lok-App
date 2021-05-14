@@ -16,7 +16,8 @@ import {
 } from './AlbumDetailsStyles';
 
 const AlbumDetails = () => {
-  const { specificUser: user, albums } = useContext(UserContext);
+  const { specificUser: user, albums, setAlbums } = useContext(UserContext);
+
   const history = useHistory();
 
   const handleReturnAlbums = () => {

@@ -99,6 +99,7 @@ export const UserWrapper = styled.div`
     width: 180px;
     margin-bottom: 5%;
     border-radius: 25%;
+    background-color: rgba(255, 255, 255, 0.35);
     box-shadow: 0.125rem 0.125rem 1rem 1px rgba(0, 0, 0, 0.25);
     & picture {
       & img {
@@ -131,7 +132,7 @@ export const PostsWrapper = styled.div`
   width: 100%;
   padding: 5%;
   background-color: rgba(255, 255, 255, 0.35);
-  border-radius: 1rem;
+  border-radius: 1rem 1rem 0 0;
   overflow-y: scroll;
   & ::-webkit-scrollbar {
     display: none;
@@ -190,7 +191,7 @@ export const PostsWrapper = styled.div`
   }
 
   @media ${devices.breakpointsTablet} {
-    gap: 1.5rem 0;
+    gap: 1rem 0;
     div {
       p {
         height: 3.375rem;
@@ -206,6 +207,97 @@ export const PostsWrapper = styled.div`
     }
   }
   @media ${devices.breakpointsDesktop} {
-    gap: 2.5rem 0;
+    gap: 1.5rem 0;
+  }
+`;
+export const NewPostsWrapper = styled.div`
+  max-height: 100%;
+  width: 100%;
+  padding: 0.5rem 5%;
+  background-color: rgba(255, 255, 255, 0.35);
+  border-radius: 0 0 1rem 1rem;
+  & div {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    & h2 {
+      text-align: right;
+      font-style: italic;
+    }
+    & button {
+      margin-left: 2.5%;
+      padding: 0 0.375rem;
+      height: 1.125rem;
+      background-image: linear-gradient(to right, #00c6ff 0%, #0072ff 51%, #00c6ff 100%);
+      text-align: center;
+      transition: 0.5s;
+      color: white;
+      font-weight: 600;
+      border-radius: 0.25rem;
+      border: thin solid white;
+      cursor: pointer;
+      & :hover {
+        background-position: right center; /* change the direction of the change here */
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+  }
+  & hr {
+    width: 100%;
+  }
+  & .error {
+    color: red;
+    font-weight: 600;
+    text-align: center;
+  }
+  & .success {
+    color: green;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  & form {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    justify-items: center;
+    gap: 0.25rem 0;
+    & input {
+      font-weight: 600;
+    }
+    & input,
+    & textarea {
+      width: 100%;
+      background: transparent;
+      border-radius: 0.5rem;
+      border: thin solid black;
+      padding: 0.25rem 0.5rem;
+      outline: none;
+      & ::-webkit-input-placeholder {
+        color: black;
+      }
+    }
+    & button {
+      border-radius: 0.5rem;
+      width: 50%;
+      border: thin solid white;
+      font-size: 0.875rem;
+      font-weight: 600;
+      background-image: linear-gradient(to right, #ff512f 0%, #f09819 51%, #ff512f 100%);
+      transition: 0.5s;
+      color: white;
+      background-size: 200% auto;
+      /* box-shadow: 0 0 20px #eee; */
+      & :hover {
+        background-position: right center; /* change the direction of the change here */
+        color: #fff;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+  }
+  @media ${devices.breakpointsTablet} {
+  }
+  @media ${devices.breakpointsDesktop} {
   }
 `;
