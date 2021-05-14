@@ -27,10 +27,21 @@ export const HeaderStyles = styled.header`
       display: flex;
       gap: 0 0.75rem;
       & li {
-        font-weight: 600;
         list-style: none;
+        & small {
+          & :hover {
+            text-decoration: underline;
+          }
+        }
       }
     }
+  }
+  .active {
+    text-decoration: underline;
+    color: black;
+    font-weight: 800;
+    filter: drop-shadow(0 0 0.125rem rgba(255, 255, 255, 0.5));
+    /* line-height: 0.125rem; */
   }
   @media ${devices.breakpointsTablet} {
     grid-template-rows: 75px calc(100vh - 75px);
@@ -39,6 +50,17 @@ export const HeaderStyles = styled.header`
         padding-left: 12.5%;
         & img {
           height: 75px;
+        }
+      }
+    }
+    & div {
+      justify-content: flex-end;
+      padding-right: 12.5%;
+      & ul {
+        & li {
+          & small {
+            font-size: 1rem;
+          }
         }
       }
     }

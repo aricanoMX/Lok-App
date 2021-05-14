@@ -1,10 +1,8 @@
 import React, { useState, useEffect, createContext, useCallback } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
-import getUsers from 'helpers/getUsers';
-import getUser from 'helpers/getUser';
-import getPosts from 'helpers/getPosts';
-import getAlbums from 'helpers/getAlbums';
+import getReqres from 'helpers/getReqres';
+import getJPH from 'helpers/getJPH';
 
 const UserContext = createContext();
 
@@ -16,24 +14,25 @@ const UserProvider = ({ children }) => {
   const [posts, setPosts] = useState([]);
   const [albums, setAlbums] = useState([]);
 
-  const toggleSidebar = (userId) => {
-    getUser(userId).then((newUser) => setSpecificUser(newUser));
-    getPosts(userId).then((newPosts) => setPosts(newPosts));
-  };
-  const toggleAlbums = useCallback((userId) => {
-    getAlbums(userId).then((newAlbums) => setAlbums(newAlbums));
-    getUser(userId).then((newUser) => setSpecificUser(newUser));
-    history.push('/album/user#' + userId);
-  }, []);
-
-  const data = { users, toggleSidebar, toggleAlbums, specificUser, posts, albums };
   useEffect(() => {
     updateUser();
   }, []);
 
   const updateUser = () => {
-    getUsers().then((newUser) => setUsers(newUser));
+    getReqres(`/users`).then((newUser) => setUsers(newUser));
   };
+
+  const toggleSidebar = (userId) => {
+    getReqres(`/users?id=${userId}`).then((newUser) => setSpecificUser(newUser));
+    getJPH(`/posts?userId=${userId}`).then((newPosts) => setPosts(newPosts));
+  };
+  const toggleAlbums = useCallback((userId) => {
+    getReqres(`/users?id=${userId}`).then((newUser) => setSpecificUser(newUser));
+    getJPH(`/albums?userId=${userId}`).then((newAlbums) => setAlbums(newAlbums));
+    history.push('/album/user#' + userId);
+  }, []);
+
+  const data = { users, toggleSidebar, toggleAlbums, specificUser, posts, albums };
 
   return <UserContext.Provider value={data}>{children}</UserContext.Provider>;
 };

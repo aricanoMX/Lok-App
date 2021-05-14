@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import { HOME, ALBUM, LOGOUT } from 'routes/paths';
 
@@ -8,30 +8,30 @@ import { HeaderStyles } from './HeaderStyles';
 const Header = () => {
   return (
     <HeaderStyles>
-      <Link to={HOME}>
+      <NavLink to={HOME}>
         <picture>
           <img
             src="https://logos.textgiraffe.com/logos/logo-name/Lok-designstyle-boots-m.png"
             alt="Logo"
           />
         </picture>
-      </Link>
+      </NavLink>
       <div>
         <ul>
           <li>
-            <Link to={HOME}>
+            <NavLink to={HOME} activeClassName="active">
               <small>Home</small>
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to={ALBUM}>
+            <NavLink to={ALBUM} activeClassName="active">
               <small>Album</small>
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to={LOGOUT}>
+            <NavLink to={LOGOUT} activeClassName="active">
               <small>Sign Out</small>
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </div>

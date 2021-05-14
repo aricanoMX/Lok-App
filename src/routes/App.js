@@ -35,7 +35,7 @@ const App = () => {
             <PrivateRoutes exact path={ALBUM_DETAILS} component={AlbumDetails} />
             <PrivateRoutes path={LOGOUT} component={Logout} />
           </UserProvider>
-          <Route component={NotFound} />
+          <Route path="*" component={NotFound} />
         </Switch>
       </AuthProvider>
     </BrowserRouter>

@@ -4,7 +4,8 @@ import { Link, useHistory } from 'react-router-dom';
 // import useModal from 'hooks/useModal';
 
 import Modal from 'components/Modal/Modal';
-import getLogin from 'helpers/getLogin';
+import getReqres from 'helpers/getReqres';
+
 import SEOHeader from 'components/SEOHeader';
 import useAuthContext from 'hooks/useAuthContext';
 
@@ -22,10 +23,9 @@ const Login = () => {
   const { email, password } = initialUser;
   const [authUsers, setAuthUsers] = useState();
   const [usersAPI, setUsersAPI] = useState();
-  // const history = useHistory();
 
   useEffect(() => {
-    getLogin().then((user) => setUsersAPI(user));
+    getReqres(`/login`).then((user) => setUsersAPI(user));
   }, []);
 
   const handleInputChange = (e) => {

@@ -18,7 +18,6 @@ import {
 const AlbumDetails = () => {
   const { specificUser: user, albums } = useContext(UserContext);
   const history = useHistory();
-  console.log(albums);
 
   const handleReturnAlbums = () => {
     history.push('/album');
